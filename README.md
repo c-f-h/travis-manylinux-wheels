@@ -2,7 +2,7 @@ python-manylinux-demo
 =====================
 Demo project for building Python wheels for Linux with Travis-CI
 
-[![Build Status](https://travis-ci.org/c-f-h/python-manylinux-demo.svg?branch=master)](https://travis-ci.org/c-f-h/python-manylinux-demo)
+[![Build Status](https://travis-ci.com/c-f-h/python-manylinux-demo.svg?branch=master)](https://travis-ci.com/c-f-h/python-manylinux-demo)
 
 
 This is an example of how to use Travis-CI to build
@@ -31,7 +31,7 @@ Continuous integration setup with Travis + Docker
 The `.travis.yml` file in this repository sets up the build environment. The
 resulting build logs can be found at
 
-  https://travis-ci.org/c-f-h/python-manylinux-demo
+  https://travis-ci.com/c-f-h/python-manylinux-demo
 
 The `.travis.yml` file instructs Travis to run the script
 `travis/build-wheels.sh` inside of the various docker build environments. This
