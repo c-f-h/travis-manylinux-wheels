@@ -1,5 +1,9 @@
 #!/bin/bash
 
+GHUSER=$1
+GHREPO=$2
+BRANCH=$3
+
 PYDIRS="
 /opt/python/cp27-cp27m/bin
 /opt/python/cp27-cp27mu/bin
@@ -15,13 +19,13 @@ set -e -x
 #yum install -y atlas-devel
 
 cd /io/
-git clone https://github.com/c-f-h/ilupp.git
+git clone -b $BRANCH https://github.com/$GHUSER/$GHREPO.git
 
 # Compile wheels
 for PYBIN in $PYDIRS; do
     #"${PYBIN}/pip" install -r /io/dev-requirements.txt
     "${PYBIN}/pip" install nose pybind11 numpy scipy
-    "${PYBIN}/pip" wheel /io/ilupp/ -w wheelhouse/
+    "${PYBIN}/pip" wheel /io/$GHREPO/ -w wheelhouse/
 done
 
 # Bundle external shared libraries into the wheels
@@ -31,6 +35,6 @@ done
 
 # Install packages and test
 for PYBIN in $PYDIRS; do
-    "${PYBIN}/pip" install ilupp --no-index -f /io/wheelhouse
-    "${PYBIN}/nosetests" /io/ilupp/test/
+    "${PYBIN}/pip" install $GHREPO --no-index -f /io/wheelhouse
+    "${PYBIN}/nosetests" /io/$GHREPO/test/
 done
