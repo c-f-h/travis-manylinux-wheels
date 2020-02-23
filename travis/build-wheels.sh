@@ -1,4 +1,14 @@
 #!/bin/bash
+
+PYDIRS="
+/opt/python/cp27-cp27m/bin
+/opt/python/cp27-cp27mu/bin
+/opt/python/cp35-cp35m/bin
+/opt/python/cp36-cp36m/bin
+/opt/python/cp37-cp37m/bin
+/opt/python/cp38-cp38/bin
+"
+
 set -e -x
 
 # Install a system package required by our library
@@ -8,7 +18,7 @@ cd /io/
 git clone https://github.com/c-f-h/ilupp.git
 
 # Compile wheels
-for PYBIN in /opt/python/*/bin; do
+for PYBIN in $PYDIRS; do
     #"${PYBIN}/pip" install -r /io/dev-requirements.txt
     "${PYBIN}/pip" install nose pybind11 numpy scipy
     "${PYBIN}/pip" wheel /io/ilupp/ -w wheelhouse/
@@ -20,7 +30,7 @@ for whl in wheelhouse/*.whl; do
 done
 
 # Install packages and test
-for PYBIN in /opt/python/*/bin/; do
+for PYBIN in $PYDIRS; do
     "${PYBIN}/pip" install ilupp --no-index -f /io/wheelhouse
     "${PYBIN}/nosetests" /io/ilupp/test/
 done
