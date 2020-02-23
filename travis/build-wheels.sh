@@ -10,7 +10,7 @@ git clone https://github.com/c-f-h/ilupp.git
 # Compile wheels
 for PYBIN in /opt/python/*/bin; do
     #"${PYBIN}/pip" install -r /io/dev-requirements.txt
-    "${PYBIN}/pip" install pybind11
+    "${PYBIN}/pip" install nose pybind11
     "${PYBIN}/pip" wheel /io/ilupp/ -w wheelhouse/
 done
 
