@@ -23,11 +23,8 @@ git clone -b $BRANCH https://github.com/$GHUSER/$GHREPO.git
 for PYBIN in $PYDIRS; do
     #"${PYBIN}/pip" install -r /io/dev-requirements.txt
     "${PYBIN}/pip" install nose pybind11 numpy scipy
-    "${PYBIN}/pip" wheel /io/$GHREPO/ -w wheelhouse/
+    "${PYBIN}/pip" wheel --no-dep /io/$GHREPO/ -w wheelhouse/
 done
-
-rm wheelhouse/numpy*
-rm wheelhouse/scipy*
 
 # Bundle external shared libraries into the wheels
 for whl in wheelhouse/*.whl; do
