@@ -5,8 +5,6 @@ GHREPO=$2
 BRANCH=$3
 
 PYDIRS="
-/opt/python/cp27-cp27m/bin
-/opt/python/cp27-cp27mu/bin
 /opt/python/cp35-cp35m/bin
 /opt/python/cp36-cp36m/bin
 /opt/python/cp37-cp37m/bin
@@ -27,6 +25,9 @@ for PYBIN in $PYDIRS; do
     "${PYBIN}/pip" install nose pybind11 numpy scipy
     "${PYBIN}/pip" wheel /io/$GHREPO/ -w wheelhouse/
 done
+
+rm wheelhouse/numpy*
+rm wheelhouse/scipy*
 
 # Bundle external shared libraries into the wheels
 for whl in wheelhouse/*.whl; do
