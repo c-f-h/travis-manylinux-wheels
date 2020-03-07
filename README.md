@@ -2,7 +2,7 @@ python-manylinux-demo
 =====================
 Demo project for building Python wheels for Linux with Travis-CI
 
-[![Build Status](https://travis-ci.com/c-f-h/python-manylinux-demo.svg?branch=master)](https://travis-ci.com/c-f-h/python-manylinux-demo)
+[![Build Status](https://travis-ci.com/c-f-h/travis-manylinux-wheels.svg?branch=master)](https://travis-ci.com/c-f-h/travis-manylinux-wheels)
 
 
 This is an example of how to use Travis-CI to build
