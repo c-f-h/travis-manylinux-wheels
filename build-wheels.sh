@@ -36,3 +36,6 @@ for PYBIN in $PYDIRS; do
     "${PYBIN}/pip" install $GHREPO --no-index -f /io/wheelhouse
     "${PYBIN}/nosetests" /io/$GHREPO/test/
 done
+
+# remove the non-manylinux wheels
+rm wheelhouse/*-linux*
